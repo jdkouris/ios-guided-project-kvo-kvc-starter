@@ -102,6 +102,10 @@
     NSLog(@"Avg Salary: %@", [employees valueForKeyPath:@"@avg.salary"]);
     NSLog(@"Salary Count: %@", [employees valueForKeyPath:@"@count.salary"]);
     NSLog(@"Max Salary: %@", [employees valueForKeyPath:@"@max.salary"]);
+    
+    [engineering setValue:@"John" forKeyPath:@"manager.name"];
+    NSString *managersName = [engineering valueForKeyPath:@"manager.name"];
+    NSLog(@"Manager's Name: %@", managersName);
 }
 
 
