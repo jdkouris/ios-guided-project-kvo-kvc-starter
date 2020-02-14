@@ -65,9 +65,26 @@
     [controller addDepartment:marketing];
     self.hrController = controller;
     
-    NSLog(@"%@", self.hrController);
+//    NSLog(@"%@", self.hrController);
     
+    NSString *key = @"privateName";
+//    NSString *key = @"jobTitle";
+//    NSString *key = @"name";
     
+//    NSString *name = [craig name]; // craig.name
+//    NSLog(@"name: %@", name);
+    
+    NSString *value = [craig valueForKey:key];
+    NSLog(@"value for key %@: %@", key, value);
+    
+//    @try {
+//        NSString *key = @"firstName";
+//
+//        NSString *value = [craig valueForKey:key];
+//        NSLog(@"value for key %@: %@", key, value);
+//    } @catch (NSException *exception) {
+//        NSLog(@"There was an exception");
+//    }
 }
 
 
