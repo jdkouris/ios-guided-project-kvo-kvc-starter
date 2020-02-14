@@ -75,7 +75,9 @@ void *KVOContext = &KVOContext;
             [_stopwatch removeObserver:self forKeyPath:@"elapsedTime" context:KVOContext];
         }
 
+        [self willChangeValueForKey:@"stopwatch"];
         _stopwatch = stopwatch;
+        [self didChangeValueForKey:@"stopwatch"];
         
         // didSet
         [_stopwatch addObserver:self forKeyPath:@"running" options:0 context:KVOContext];
