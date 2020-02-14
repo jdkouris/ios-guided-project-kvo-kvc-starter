@@ -67,12 +67,14 @@
     
 //    NSLog(@"%@", self.hrController);
     
-    NSString *key = @"privateName";
+    NSString *key = @"salary";
 //    NSString *key = @"jobTitle";
 //    NSString *key = @"name";
     
 //    NSString *name = [craig name]; // craig.name
 //    NSLog(@"name: %@", name);
+    
+    [craig setValue:@(42) forKey:key]; // using the @ to convert a primitive type to objc type
     
     NSString *value = [craig valueForKey:key];
     NSLog(@"value for key %@: %@", key, value);
@@ -85,6 +87,21 @@
 //    } @catch (NSException *exception) {
 //        NSLog(@"There was an exception");
 //    }
+    
+//    LSIEmployee *employee = self.hrController.departments.lastObject.manager;
+    NSArray *employees = [self.hrController valueForKeyPath:@"departments.@distinctUnionOfArrays.employees"];
+    NSLog(@"employees1: %@", employees);
+    
+    NSArray *employees2 = [self.hrController valueForKeyPath:@"departments.employees"];
+    NSLog(@"employees2: %@", employees2);
+    
+    NSArray *names = [self.hrController valueForKeyPath:@"departments.name"];
+    NSLog(@"names: %@", names);
+    
+    NSLog(@"Salaries: %@", [employees valueForKeyPath:@"salary"]);
+    NSLog(@"Avg Salary: %@", [employees valueForKeyPath:@"@avg.salary"]);
+    NSLog(@"Salary Count: %@", [employees valueForKeyPath:@"@count.salary"]);
+    NSLog(@"Max Salary: %@", [employees valueForKeyPath:@"@max.salary"]);
 }
 
 
