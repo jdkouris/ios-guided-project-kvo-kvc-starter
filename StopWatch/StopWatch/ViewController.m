@@ -69,7 +69,11 @@ void *KVOContext = &KVOContext;
     if (stopwatch != _stopwatch) {
         
         // willSet
-		// TODO: Cleanup KVO - Remove Observers
+        // remove the old stop watch before adding a new one
+        if (_stopwatch) {
+            [_stopwatch removeObserver:self forKeyPath:@"running" context:KVOContext];
+            [_stopwatch removeObserver:self forKeyPath:@"elapsedTime" context:KVOContext];
+        }
 
         _stopwatch = stopwatch;
         
@@ -98,9 +102,10 @@ void *KVOContext = &KVOContext;
     }
 }
 
-- (void)dealloc {
-	// TODO: Stop observing KVO (otherwise it will crash randomly)
-    
+- (void)dealloc
+{
+	// Stop observing KVO (otherwise it will crash randomly)
+    self.stopwatch = nil;
 }
 
 @end
